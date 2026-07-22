@@ -1,0 +1,130 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[left=0.70in,right=0.70in,top=0.61in,bottom=0.42in]{geometry}
+\usepackage{iftex}
+\ifPDFTeX
+  % Prism commonly compiles with pdfLaTeX, where fontspec is unavailable.
+  \usepackage[sfdefault,lining]{carlito}
+\else
+  \usepackage{fontspec}
+  \IfFontExistsTF{Aptos}{
+    \setmainfont{Aptos}
+  }{
+    % Carlito is the closest metrically compatible installed fallback.
+    \setmainfont{Carlito}
+  }
+\fi
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+\definecolor{resumeBlue}{HTML}{184F63}
+\definecolor{techBlue}{HTML}{0085B3}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{1em}
+
+\newcommand{\resumesection}[1]{%
+  \vspace{4.5pt}%
+  {\fontsize{13}{14}\selectfont\bfseries\color{resumeBlue}#1}\par
+  \vspace{6.5pt}\nointerlineskip
+  {\color{resumeBlue}\hrule height 1.15pt}%
+  \vspace{4.5pt}
+}
+
+\newcommand{\project}[2]{%
+  {\fontsize{12}{12.8}\selectfont\bfseries #1}\par
+  {\fontsize{11}{11.6}\selectfont\itshape\color{techBlue}#2}\par
+}
+
+\newenvironment{resumelist}{%
+  \begin{itemize}[leftmargin=18pt,label=\textbullet,itemsep=0.9pt,topsep=0pt,
+    parsep=0pt,partopsep=0pt]
+}{\end{itemize}}
+
+\begin{document}
+
+\begin{center}
+  {\fontsize{28}{31}\selectfont\bfseries MD. RAHIMUL HASSAN}\par
+  \vspace{4pt}
+  {\fontsize{11}{12}\selectfont
+    \faEnvelope\enspace\href{mailto:rahimulhasan16@gmail.com}{\color{resumeBlue}rahimulhasan16@gmail.com}
+    \hspace{1.25em}
+    \faPhone\enspace\href{tel:+8801314747098}{\color{resumeBlue}+8801314747098}\par
+    \vspace{2.5pt}
+    \faGithub\enspace\href{https://github.com/MdRahimulHassan}{\color{resumeBlue}github.com/MdRahimulHassan}
+    \hspace{1.25em}
+    \faLinkedin\enspace\href{https://linkedin.com/in/rahimul-hasan-98bb31300/}{\color{resumeBlue}linkedin.com/in/rahimul-hasan-98bb31300/}
+  }
+\end{center}
+\vspace{4pt}
+
+\resumesection{Education}
+\begin{resumelist}
+  \item B. Sc. in Software Engineering, Shahjalal University of Science \& Technology.
+    \begin{resumelist}
+      \item Feb 2023--May 2027 (Expected) \textbullet\ CGPA: 3.62/4.00 (Up to the 6\textsuperscript{th} Semester)
+    \end{resumelist}
+  \item College : Notre Dame College, Dhaka
+\end{resumelist}
+
+\resumesection{Skills}
+\begin{resumelist}
+  \item \textbf{Languages:} C/C++ \textbullet\ Java \textbullet\ JavaScript \textbullet\ Python \textbullet\ Dart \textbullet\ SQL \textbullet\ Golang
+  \item \textbf{Frontend:} React \textbullet\ Next.Js \textbullet\ Tailwind CSS \textbullet\ Flutter
+  \item \textbf{Backend:} Golang \textbullet\ Gin \textbullet\ Node.Js \textbullet\ FastAPI
+  \item \textbf{Database:} MySQL \textbullet\ PostgreSQL
+  \item \textbf{DevOps \& Tools:} Docker \textbullet\ Docker Compose \textbullet\ Git \textbullet\ GitHub \textbullet\ Postman \textbullet\ MCP
+\end{resumelist}
+
+\resumesection{Experience \& Competitions}
+\begin{resumelist}
+  \item \textbf{Finalist} in SUST IUPC 2024.
+  \item \textbf{5th Place}, Project Showcase, UIU CSE Fest 2025.
+  \item Ranked among the \textbf{Top 250 teams} in ICPC Asia Dhaka Regional Preliminary Contest 2025.
+  \item \textbf{800+} Problems solved in Codeforces, Codechef, Atcoder.
+  \item Leetcode Top Interview 150 solved, SQL 50 solved.
+\end{resumelist}
+
+\resumesection{Projects}
+\project{AgentFlow - Multi-Agent Task Orchestration System}{Go, MCP, React, Groq/Gemini APIs}
+\begin{resumelist}
+  \item Built a multi-agent orchestration system in Go with custom agent loops, specialized sub-agents and developed a custom MCP server using the Go SDK.
+  \item Deployed Groq and Gemini APIs with failover support and designed a React UI with live agent activity streaming.
+\end{resumelist}
+\vspace{5.2pt}
+
+\project{TweetAI --- AI-Powered Twitter Clone}{Go, PostgreSQL (pgvector), Redis, Ollama, WebSockets, React}
+\begin{resumelist}
+  \item Engineered a Twitter-style platform in Go with a hybrid Redis-backed timeline and live WebSocket updates.
+  \item Implemented an embedding-based ``For You'' feed using Ollama, pgvector, and hybrid ranking.
+\end{resumelist}
+\vspace{5.2pt}
+
+\project{Personal RAG --- Document Q\&A System}{Go, Ollama, PostgreSQL (pgvector), JavaScript}
+\begin{resumelist}
+  \item Architected a self-hosted RAG pipeline in Go (PDF ingestion $\rightarrow$ chunking $\rightarrow$ embeddings $\rightarrow$ pgvector storage) with a REST API and JS frontend for grounded, LLM-generated answers.
+  \item Designed a fully local architecture using Ollama for embeddings and generation --- no API keys or cloud costs.
+\end{resumelist}
+\vspace{5.2pt}
+
+\project{Duroq Sathi --- Disaster Management App}{Flutter, Firebase Auth, Cloud Firestore, Google Maps APIs}
+\begin{resumelist}
+  \item Developed role-based dashboards with real-time GPS tracking, route navigation, rescue requests, and flood/weather alerts.
+  \item Implemented push-based rescue requests and WebView modules for live flood and weather alerts.
+\end{resumelist}
+
+\resumesection{Leadership \& Achievements}
+\begin{resumelist}
+  \item \textbf{1st Runner-Up}, Hult Prize at SUST, 2025.
+  \item \textbf{4th Place}, Mastermind 2.0 -- A National Case Competition.
+  \item Executive Member, SWE Society, SUST.
+  \item Vice President, Jamalpur Association, SUST.
+\end{resumelist}
+
+\end{document}
